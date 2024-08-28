@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FireDeptWebApp</title>
+</head>
+<body>
+    <h1>Fire Department Applications</h1>
+    <div>
+        <h2>Create New Application</h2>
+        <form id="applicationForm">
+            <label for="applicantName">Name:</label>
+            <input type="text" id="applicantName" name="applicantName" required>
+            <br>
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div>
+        <h2>All Applications</h2>
+        <ul id="applicationsList"></ul>
+    </div>
+
+    <script>
+        // Function to fetch all applications
+        async function fetchApplications() {
+            const response = await fetch('http://localhost:3000/applications');
+            const applications = await response.json();
+            const applicationsList = document.getElementById('applicationsList');
+            applicationsList.innerHTML = '';
+            applications.forEach(app => {
+                const li = document.createElement('li');
+                li.textContent = `Name: ${app.applicantName}, Address: ${app.address}, Status: ${app.status}`;
+                applicationsList.appendChild(li);
+            });
+        }
+
+        // Fetch applications when the page loads
+        window.onload = fetchApplications;
+
+        // Handle form submission
+        document.getElementById('applicationForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const applicantName = document.getElementById('applicantName').value;
+            const address = document.getElementById('address').value;
+
+            const response = await fetch('http://localhost:3000/applications', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ applicantName, address }),
+            });
+
+            if (response.ok) {
+                fetchApplications(); // Refresh the list of applications
+                document.getElementById('applicationForm').reset(); // Clear the form
+            }
+        });
+    </script>
+</body>
+</html>
