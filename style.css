@@ -1,0 +1,225 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+.header {
+    text-align: center;
+    padding: 1px;
+    background-color: #ce4b12;
+    position: relative;
+}
+.topimage {
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+    display: block;
+    
+}
+
+.dropdown {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.login {
+    padding: 10px 20px;
+    background-color: #af904c; /* Button background color */
+    color: white; /* Button text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%; /* Position below the login button */
+    right: 0;
+    background-color: #a05a45;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.dropdown-content .dropdown-btn {
+    background-color: #a05a45;
+    color: whitesmoke;
+    padding: 10px 20px;
+    border: none;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.dropdown-content .dropdown-btn:hover {
+    background-color: #9c3617; /* Hover effect for dropdown buttons */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.login:hover {
+    background-color: #a05a45; /* Hover effect for main login button */
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Adds space between the search box and the login button */
+    
+    position: absolute;
+    top: 20px;
+    right: 80px;
+}
+
+.search-box input[type="text"] {
+    padding: 10px;
+    background-color :#d13b00;
+    
+    border: 1px solid #0c0000;
+    border-radius: 5px 0 0 5px;
+    font-size: 16px;
+}
+
+.search-btn {
+    padding: 10px 20px;
+    background-color: #8e0b0b; /* Button background color */
+    color: white; /* Button text color */
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.search-btn:hover {
+    background-color: #a74217; /* Hover effect for search button */
+}
+
+.menue {
+    position: absolute;
+    top: 200px;
+    left: 10px;
+}
+
+.menue-btn {
+    padding: 50px 60px;
+    background-color: #333; /* Button background color */
+    color: white; /* Button text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.menue-content {
+    display: none;
+    position: absolute;
+    top: 100%; /* Position below the menu button */
+    left: 0;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.menue-content .menue-item {
+    display: block;
+    padding: 10px 20px;
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.menue-content .menue-item:hover {
+    background-color: #ddd; /* Hover effect for menu items */
+}
+
+.menue:hover .menue-content {
+    display: block;
+}
+
+.options {
+    
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.option {
+    padding: 10px 20px;
+    
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 0 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.option:hover {
+    background-color: #4CAF50; /* Hover background color */
+    color: white; /* Hover text color */
+}
+.notice-container {
+    width: 100%;
+    padding: 20px 0; /* Adds space above and below the notice box */
+    background-color: #f9f9f9; /* Background color of the notice container */
+    display: flex; /* Allows for horizontal layout */
+    align-items: flex-start; /* Align items to the top */
+}
+
+
+
+.notice-box {
+    position: relative;
+top: 20px; /* Distance from the top of the header */
+    left: 900px; 
+    background-color: #ff8049; /* Background color of the notice box */
+    color: #333; /* Text color */
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    width:250px; /* Adjust the width as needed */
+    text-align: center;
+    margin: 20px auto; /* Centers the notice box horizontally */
+}
+
+
+
+.image-boxes-container {
+    position: relative;
+    top: 20px; /* Distance from the top of the header */
+    right: 250px; 
+    display: grid ; /* Aligns the boxes in a row */
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 100px; /* Space between the boxes */
+    flex: 1; /* Takes up remaining space in the container */
+}
+
+.image-box {
+    width: 200px; /* Width of each box */
+    height: 200px; /* Height of each box */
+    overflow: hidden; /* Ensures images do not overflow the box */
+    border-radius: 5px; /* Rounded corners for the box */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for the boxes */
+}
+
+.image-box img {
+    width: 100%; /* Makes the image fit the box */
+    height: auto;
+    display: block;
+}
+.footer{
+    text-align: center;
+    padding: 1px;
+    background-color: #ce4b12;
+    position: relative;
+
+}
