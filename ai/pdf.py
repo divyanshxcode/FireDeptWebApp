@@ -1,63 +1,73 @@
-import sqlite3
-from fpdf import FPDF
+import os
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
+from signrequest_client import SignRequestClient
+from signrequest_client.apis import SignRequestQuickCreateApi
+from signrequest_client.models import QuickCreate
 
-# Create a connection to the SQLite database
-conn = sqlite3.connect('database_name.db')  # Replace with your database name
-cursor = conn.cursor()
+from dotenv import load_dotenv
 
-# Fetch data from the database
-cursor.execute("SELECT name, address, inspector_name FROM noc_details WHERE id=1")  # Replace with your query
-data = cursor.fetchone()
+load_dotenv()
 
-name = data[0]
-address = data[1]
-inspector_name = data[2]
+def generate_pdf(application_data, output_path):
+    c = canvas.Canvas(output_path, pagesize=letter)
+    width, height = letter
 
-# Create a PDF class inheriting from FPDF
-class PDF(FPDF):
-    def header(self):
-        # Organization details
-        self.set_font('Arial', 'B', 12)
-        self.cell(0, 10, 'Organization Name', 0, 1, 'R')
-        self.set_font('Arial', '', 10)
-        self.cell(0, 10, 'Street Address', 0, 1, 'R')
-        self.cell(0, 10, 'City, Zip Code', 0, 1, 'R')
-        self.cell(0, 10, 'Phone Number or Email', 0, 1, 'R')
-        self.ln(20)
+    # Add content to the PDF
+    c.drawString(100, height - 100, f"Applicant Name: {application_data['applicantName']}")
+    c.drawString(100, height - 120, f"Address: {application_data['address']}")
+    c.drawString(100, height - 140, f"Contact Info: {application_data['contactInfo']}")
+    c.drawString(100, height - 160, f"Status: {application_data['status']}")
+    c.drawString(100, height - 180, f"Submission Date: {application_data['submissionDate']}")
 
-    def footer(self):
-        # Signature area
-        self.set_y(-30)
-        self.set_font('Arial', '', 10)
-        self.cell(0, 10, 'Signature:', 0, 1, 'L')
-        self.cell(0, 10, 'Date:', 0, 1, 'L')
+    c.save()
 
-    def noc_body(self, name, address, inspector_name):
-        # Title
-        self.set_font('Arial', 'B', 16)
-        self.cell(0, 10, 'No Objection Certificate', 0, 1, 'C')
-        self.ln(10)
+def send_for_signature(file_path, signer_email):
+    # Configure API key authorization
+    configuration = SignRequestClient.Configuration()
+    configuration.api_key['Authorization'] = os.getenv('SIGNREQUEST_API_TOKEN')    
+    configuration.api_key_prefix['Authorization'] = 'Token'
 
-        # Body
-        self.set_font('Arial', '', 12)
-        self.multi_cell(0, 10, f"TO WHOM IT MAY CONCERN:\n\n"
-                               f"This is to certify that {name}, resident of {address}, is the owner of "
-                               f"the property located at the aforementioned address.\n\n"
-                               f"Certified further is that {inspector_name}, interposes no objection to the "
-                               f"mentioned property of the said applicant.\n\n"
-                               f"ISSUED on this date as requested by {name} in support of their application for the required approvals.")
+    # Create an instance of the API class
+    api_instance = SignRequestQuickCreateApi(SignRequestClient.ApiClient(configuration))
 
-# Instantiate PDF
-pdf = PDF()
+    # Create a document to sign
+    quick_create = QuickCreate(
+        signers=[{'email': signer_email}],
+        from_email='your-email@example.com',
+        subject='Please sign this document',
+        message='Please sign the attached document.',
+        file_from_url=file_path
+    )
 
-# Add a page
-pdf.add_page()
+    try:
+        # Send document for signing
+        api_response = api_instance.quick_create(data=quick_create)
+        print(f"Document sent for signing. SignRequest ID: {api_response.uuid}")
+        return api_response.uuid
+    except Exception as e:
+        print(f"Exception when calling SignRequestQuickCreateApi->quick_create: {e}")
+        return None
 
-# Add content
-pdf.noc_body(name, address, inspector_name)
+def main(application_data):
+    pdf_path = 'application.pdf'
+    generate_pdf(application_data, pdf_path)
+    
+    signer_email = application_data['contactInfo']  # Assuming contactInfo is the email
+    signature_request_id = send_for_signature(pdf_path, signer_email)
+    
+    if signature_request_id:
+        print(f"PDF generated and sent for signature. SignRequest ID: {signature_request_id}")
+    else:
+        print("Failed to send the document for signature.")
 
-# Save the PDF
-pdf.output('noc_certificate.pdf')
-
-# Close the database connection
-conn.close()
+# Example usage
+if __name__ == "__main__":
+    sample_application = {
+        'applicantName': 'John Doe',
+        'address': '123 Main St, Anytown, USA',
+        'contactInfo': 'john.doe@example.com',
+        'status': 'Pending',
+        'submissionDate': '2023-08-30'
+    }
+    main(sample_application)
