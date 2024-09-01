@@ -57,17 +57,6 @@
     ```
 
 4. **Environment Variables:** Configure your `.env` file with the necessary variables (e.g., MongoDB URI, API keys).
----
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
-
----
-
-## 📫 Contact
-
-For inquiries, please contact us at: [contactdivyanshsingh@gmail.com](mailto:contactdivyanshsingh.com)
 
 ---
 
