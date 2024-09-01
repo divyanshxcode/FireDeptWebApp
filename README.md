@@ -1,54 +1,75 @@
-<div align="center">
-  
-  ![GitHub repo size](https://img.shields.io/github/repo-size/codewithsadee/adex)
-  ![GitHub stars](https://img.shields.io/github/stars/codewithsadee/adex?style=social)
-  ![GitHub forks](https://img.shields.io/github/forks/codewithsadee/adex?style=social)
-[![Twitter Follow](https://img.shields.io/twitter/follow/codewithsadee_?style=social)](https://twitter.com/intent/follow?screen_name=codewithsadee_)
-  [![YouTube Video Views](https://img.shields.io/youtube/views/5Bl3CCizSRQ?style=social)](https://youtu.be/5Bl3CCizSRQ)
+# 🚒 Fire Department Real-Time Monitoring and Evaluation Software
 
-  <br />
-  <br />
+## SIH Problem Statement - 1623
 
-  <h2 align="center">Adex - Business Agency Website</h2>
+**Title: A real-time monitoring and evaluation software for applications received in the Fire Department relating to inspections, follow-ups, and issue of NOCs (No Objection Certificates).**
 
-  Adex is a fully responsive business agency website, <br />Responsive for all devices, build using HTML, CSS, and JavaScript.
+---
 
-  <a href="https://codewithsadee.github.io/adex/"><strong>➥ Live Demo</strong></a>
+## 📊 Project Stats
 
-</div>
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/divyanshxcode/FireDeptWebApp)
+![GitHub last commit](https://img.shields.io/github/last-commit/divyanshxcode/FireDeptWebApp)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/divyanshxcode/FireDeptWebApp)
 
-<br />
+---
 
-### Demo Screeshots
 
-![Adex Desktop Demo](./readme-images/desktop.png "Desktop Demo")
+## 🌟 Features
+
+- **Real-Time Monitoring:** Track the status of inspections, follow-ups, and NOC issuance in real time.
+- **Automated Alerts:** Get notified instantly about pending tasks and deadlines.
+- **Data Visualization:** Interactive dashboards for data analysis and reporting.
+- **User Management:** Role-based access for Fire Department officials and external users.
+- **Secure and Scalable:** Built with security best practices, ensuring scalability and reliability.
+
+## 🛠️ Tech Stack
+
+- **Frontend:** React.js, 
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Other Tools:** Git, Github
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
-Before you begin, ensure you have met the following requirements:
+- Node.js (v16 or above)
+- MongoDB (v4.4 or above)
+- Docker (Optional)
 
-* [Git](https://git-scm.com/downloads "Download Git") must be installed on your operating system.
+### Installation
 
-### Run Locally
+1. Clone the repo
+    ```bash
+    git clone https://github.com/yourusername/your-repo-name.git
+    ```
+2. Install dependencies
+    ```bash
+    cd your-repo-name
+    npm install
+    ```
+3. Start the development server
+    ```bash
+    npm run dev
+    ```
 
-To run **Adex** locally, run this command on your git bash:
+4. **Environment Variables:** Configure your `.env` file with the necessary variables (e.g., MongoDB URI, API keys).
+---
 
-Linux and macOS:
+## 📝 License
 
-```bash
-sudo git clone https://github.com/codewithsadee/adex.git
-```
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
-Windows:
+---
 
-```bash
-git clone https://github.com/codewithsadee/adex.git
-```
+## 📫 Contact
 
-### Contact
+For inquiries, please contact us at: [contactdivyanshsingh@gmail.com](mailto:contactdivyanshsingh.com)
 
-If you want to contact with me you can reach me at [Twitter](https://www.twitter.com/codewithsadee).
+---
 
-### License
+_This project is a part of our submission for Smart India Hackathon 2024._
 
-[MIT](https://choosealicense.com/licenses/mit/)
