@@ -14,7 +14,6 @@
 
 ---
 
-
 ## 🌟 Features
 
 - **Real-Time Monitoring:** Track the status of inspections, follow-ups, and NOC issuance in real time.
@@ -25,7 +24,7 @@
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** React.js, 
+- **Frontend:** React.js,
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB
 - **Other Tools:** Git, Github
@@ -43,22 +42,41 @@
 ### Installation
 
 1. Clone the repo
-    ```bash
-    git clone https://github.com/yourusername/your-repo-name.git
-    ```
-2. Install dependencies
-    ```bash
-    cd your-repo-name
-    npm install
-    ```
-3. Start the development server
-    ```bash
-    npm run dev
+
+   ```bash
+   git clone https://github.com/divyanshxcode/FireDeptWebApp.git
+   ```
+2. Environment Variables: 
+Create a config file to add environment variables.
+
+   ```bash
+   touch ./FireDeptWebApp/backend/config/config.env
+   ```
+   Add environment variables in this file -
+
+    ```txt
+    PORT=4000
+    MONGO_URI=
+    FRONTEND_URL=
+    CLOUDINARY_CLOUD_NAME=
+    CLOUDINARY_API_KEY=
+    CLOUDINARY_API_SECRET=
+    JWT_SECRET_KEY=
+    JWT_EXPIRE=
+    COOKIE_EXPIRE=
     ```
 
-4. **Environment Variables:** Configure your `.env` file with the necessary variables (e.g., MongoDB URI, API keys).
+3. Install dependencies
 
+   ```bash
+   cd FireDeptWebApp
+   npm install bcrypt cloudinary cookie-parser cors dotenv express express-fileupload jsonwebtoken mongoose node-cron nodemailer validator
+   ```
+4. Start the development server
+
+   ```bash
+   npm run dev
+   ```
 ---
 
 _This project is a part of our submission for Smart India Hackathon 2024._
-
