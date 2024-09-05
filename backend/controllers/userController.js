@@ -16,7 +16,7 @@ export const register = catchAsyncErrors(async (req, res, next) => {
     } = req.body;
 
     if (!name || !email || !phone || !address || !password || !role) {
-      return next(new ErrorHandler("All fileds are required.", 400));
+      return next(new ErrorHandler("All fieleds are required.", 400));
     }
     const existingUser = await User.findOne({ email });
     if (existingUser) {
