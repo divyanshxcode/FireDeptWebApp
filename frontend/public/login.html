@@ -7,29 +7,64 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="assets/css/login.css">
     <title>Login Page | Fire department of Delhi</title>
+    <style>
+        select {
+          width: 100%;
+          padding: 8px;
+        
+          border-radius: 5px;
+          background-color: #f0f0f0;
+          color: #757575;
+          font-size: 13px;
+          outline: none;
+          transition: border-color 0.3s ease-in-out;
+        }
+      
+       
+      
+        option {
+          padding: 10px;
+          background-color: #ecf0f1;
+          
+        }
+      </style>
 </head>
 
 <body>
 
     <div class="container" id="container">
         <div class="form-container sign-up">
-            <form>
+            <form id="registerForm">
                 <h1>Create Account</h1>
-                <input type="text" placeholder="Name">
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
-                <button>Sign Up</button>
+                <input type="text" id="name" placeholder="Name" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="tel" id="phone" placeholder="Phone" required>
+                <input type="text" id="address" placeholder="Address" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <select id="role" required>
+                    <option value="">Register As</option>
+                    <option value="Customer">User</option>
+                    <option value="Officer">Officer</option>
+                </select>
+                <button type="submit">Sign Up</button>
             </form>
         </div>
+
         <div class="form-container sign-in">
-            <form>
+            <form id="loginForm">
                 <h1>Sign In</h1>
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
+                <input type="email" id="loginEmail" placeholder="Email" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <select id="loginRole" required>
+                    <option value="">Register As</option>
+                    <option value="Customer">User</option>
+                    <option value="Officer">Officer</option>
+                </select>
                 <a href="#">Forget Your Password?</a>
-                <button>Log In</button>
+                <button type="submit">Log In</button>
             </form>
         </div>
+
         <div class="toggle-container">
             <div class="toggle">
                 <div class="toggle-panel toggle-left">
